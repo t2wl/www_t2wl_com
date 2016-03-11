@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<link rel="stylesheet" href="app/libs/gridly/stylesheets/jquery.gridly.css" />
+	<style type="text/css">
+	  .gridly {
+	    position: relative;
+	  }
+	  .brick.small {
+	    width: 140px;
+	    height: 140px;
+	    border:1px solid red;
+	  }
+	  .brick.large {
+	    width: 300px;
+	    height: 300px;
+	    border:1px solid red;
+	  }
+	</style>
+</head>
+<body>
+	<div class="gridly">
+	  <div class="brick small">1</div>
+	  <div class="brick small">2</div>
+	  <div class="brick small">3</div>
+	  <div class="brick small">4</div>
+	  <div class="brick small">5</div>
+	  <div class="brick small">6</div>
+	</div>
+	<script src="app/libs//jquery/dist/jquery.min.js"></script>
+	<script src="app/libs/gridly/javascripts/jquery.gridly.js"></script>
+	<script>
+	  $('.gridly').gridly({
+	    base: 10, // px 
+	    gutter: 20, // px
+	    columns: 3
+	  });
+	  var reordering = function($elements) {
+	    // Called before the drag and drop starts with the elements in their starting position.
+	  };
+
+	  var reordered = function($elements) {
+	    // Called after the drag and drop ends with the elements in their ending position.
+	    var data  = [], obj = {};
+	    $('.gridly').find('div').each(function(index, el) {
+	    	data.push({
+	    		'index' : index,
+	    		'top'   : parseInt($(el).css('top'), 10) 
+	    		});
+	    });
+	    data.sort(compare("top"));
+	    console.log(data);
+	    function compare(propertyName){
+			return function (object1, object2) {
+				var value1 = object1[propertyName];
+				var value2 = object2[propertyName];
+				if (value2 < value1) {
+					return -1;
+				}
+				else if (value2 > value1) {
+					return 1;
+				}
+				else {
+					return 0;
+				}
+	    	}
+	    }
+	  };
+
+	  $('.gridly').gridly({
+	    callbacks: { reordering: reordering , reordered: reordered }
+	  });
+
+	</script>
+</body>
+</html>

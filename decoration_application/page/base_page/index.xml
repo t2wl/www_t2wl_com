@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+	<default>
+		<block name='header'></block>
+		<label>以上为页头区域</label>
+		<block top='1'></block>
+		<block top='2'>
+			<block width='230'></block>
+			<block width='950'></block>
+		</block>
+		<block top='3'>
+			<block width='950'></block>
+			<block width='230'></block>
+		</block>
+		<temp>
+			<block class='add_block'>添加布局单元</block>
+		</temp>
+		<label>以下为页尾区域</label>
+		<block name='footer'></block>
+	</default>
