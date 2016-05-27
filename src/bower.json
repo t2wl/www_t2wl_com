@@ -1,0 +1,23 @@
+{
+  "name": "src",
+  "authors": [
+    "yt <a627443839@qq.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "libs/",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "^2.2.4",
+    "bootstrap": "^3.3.6"
+  }
+}
