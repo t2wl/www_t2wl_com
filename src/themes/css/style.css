@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+
+.dn {
+  display: none;
+}
+
+.tc {
+  text-align: center;
+}
+
+.fl {
+  float: left;
+}
+
+.ov {
+  overflow: hidden;
+}
+
+::selection {
+  background: orange;
+}
+
+::-moz-selection {
+  background: orange;
+}
+
+.header {
+  height: 100px;
+  background: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 111;
+}
+.header img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.content {
+  margin-top: 100px;
+}
+
+.footer > ul {
+  overflow: hidden;
+  list-style: outside none none;
+}
+.footer > ul li {
+  float: left;
+  width: 33%;
+  text-align: center;
+}
+.footer > ul li dt {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 15px;
+}
+.footer > ul li dt:after {
+  content: '';
+  position: absolute;
+  background: black;
+  width: 60px;
+  height: 1px;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+.fixed-footer {
+  background: white;
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  transition: all linear .3s;
+  z-index: 11;
+}
+
+.l-header {
+  background: black;
+  text-align: center;
+  height: 100px;
+}
+.l-header > img {
+  margin-top: 10px;
+}
+.l-header ul {
+  color: white;
+  margin-top: 20px;
+}
+.l-header ul li {
+  display: inline-block;
+  vertical-align: top;
+  width: 15%;
+}
+.l-header ul li:first-child {
+  border-right: 1px solid white;
+}
+
+.l-content {
+  margin-bottom: 100px;
+}
+.l-content .l-title {
+  font-size: 35px;
+  margin: 50px 0;
+}
+.l-content .mou {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.l-content .mou li {
+  display: inline-block;
+  padding: 0 30px;
+  cursor: pointer;
+}
+
+.l-show {
+  width: 80%;
+  margin: 0 auto;
+}
+.l-show .section_t {
+  text-align: center;
+  border-bottom: 1px solid #e6e6e6;
+  margin-bottom: 20px;
+  padding: 20px 0;
+}
+
+.swiper-container2 .swiper-button-next, .swiper-container2 .swiper-button-prev {
+  width: 33%;
+  background-color: black;
+  opacity: 0.5;
+  top: 0;
+  bottom: 0;
+  margin-top: 0;
+  height: 100%;
+}
+.swiper-container2 .swiper-button-next:hover, .swiper-container2 .swiper-button-prev:hover {
+  opacity: .3;
+}
+
+.swiper-container2 .swiper-button-next {
+  right: 0;
+}
+.swiper-container2 .swiper-button-prev {
+  left: 0;
+}
+
+.a_i_box div.fl {
+  width: 30%;
+  margin-right: 80px;
+  padding-left: 80px;
+}
+.a_i_box div.fl + div.ov {
+  padding-right: 80px;
+}
+.a_i_box div.fl + div.ov p {
+  text-align: justify;
+}
+.a_i_box div.fl + div.ov p:first-child {
+  font-size: 30px;
+  margin-bottom: 10px;
+}

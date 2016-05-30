@@ -224,7 +224,7 @@ module.exports = function(grunt) {
                 },
 
                 files: [ //下面文件的改变就会实时刷新网页
-                    'src/templates/*.html',
+                    'src/tpls/*.html',
                     'src/themes/css/{,*/}*.css',
                     'src/themes/js/{,*/}*.js',
                     'src/themes/images/{,*/}*.{png,jpg}',
