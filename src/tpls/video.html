@@ -6,16 +6,17 @@
     <title>Document</title>
     <link rel="stylesheet" href="../themes/css/style.css" />
     <link rel="stylesheet" href="../libs/Swiper/dist/css/swiper.min.css" />
+    <link rel="stylesheet" href="../libs/prettyPhoto/css/prettyPhoto.css" />
 </head>
 
 <body>
     <div class="page">
         <div class="l-header">
-            <img src="../themes/images/l-logo.jpg" height="31" width="150" alt="" />
+            <img src="../themes/images/l-logo.jpg" height="31" width="150" alt=""/>
             <ul>
-                <li>
-                    <span>Collections</span>
-                    <dl class="dn">
+                <li class="slidedown">
+                    <span >Collections</span>
+                    <dl class="dn slidedown-s">
                         <dd>Collections</dd>
                         <dd>Collections</dd>
                         <dd>Collections</dd>
@@ -23,10 +24,9 @@
                         <dd>Collections</dd>
                         <dd>Collections</dd>
                     </dl>
-                </li>
-                <li>Discover</li>
+                </li><li><span>Discover</span></li>
             </ul>
-            <div class="dn">please select category</div>
+            <div class="dn slidedown-s"></div>
             <ul>
                 <li class="active" data-ct="Events & News">Events & News</li>
                 <li data-ct="Events & News">Events & News</li>
@@ -35,38 +35,44 @@
                 <li data-ct="Events & News">Events & News</li>
             </ul>
         </div>
-    </div>
     <div class="video-list">
         <ul>
-            <li>
-                <img src="../themes/images/video.jpg" />
+            <li class="gallery">
+                <a href="https://player.vimeo.com/video/132088671"  rel="prettyPhoto[movies]"><img src="../themes/images/video.jpg" /></a>
                 <p>title</p>
             </li>
-            <li>
-                <img src="../themes/images/video.jpg" />
+            <li class="gallery">
+                <a href=""  rel="prettyPhoto[movies]"><img src="../themes/images/video.jpg" /></a>
                 <p>title</p>
             </li>
-            <li>
-                <img src="../themes/images/video.jpg" />
+            <li class="gallery">
+                <a href=""  rel="prettyPhoto[movies]"><img src="../themes/images/video.jpg" /></a>
                 <p>title</p>
             </li>
-            <li>
-                <img src="../themes/images/video.jpg" />
+            <li class="gallery">
+                <a href=""  rel="prettyPhoto[movies]"><img src="../themes/images/video.jpg" /></a>
                 <p>title</p>
             </li>
-            <li>
-                <img src="../themes/images/video.jpg" />
+            <li class="gallery">
+                <a href=""  rel="prettyPhoto[movies]"><img src="../themes/images/video.jpg" /></a>
                 <p>title</p>
             </li>
-            <li>
-                <img src="../themes/images/video.jpg" />
+            <li class="gallery">
+                <a href=""  rel="prettyPhoto[movies]"><img src="../themes/images/video.jpg" /></a>
                 <p>title</p>
             </li>
         </ul>
     </div>
+    </div>
     <script src="../libs/jquery/dist/jquery.min.js"></script>
     <script src="../libs/Swiper/dist/js/swiper.min.js"></script>
+    <script src="../libs/prettyPhoto/js/jquery.prettyPhoto.js"></script>
     <script src="../themes/js/app.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".gallery a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
+    });
+    </script>
 </body>
 
 </html>

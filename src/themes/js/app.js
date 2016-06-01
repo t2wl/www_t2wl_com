@@ -9,26 +9,69 @@ jQuery(document).ready(function($) {
         prevButton: '.swiper-button-prev',
         loop: true,
         slidesPerView: 3,
+        breakpoints: {
+            920: {
+              slidesPerView: 2,
+            }
+        }
     });
     var swiper = new Swiper('.swiper-container3', {
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
         loop: true,
         slidesPerView: 2,
-        spaceBetween : 50,
+        breakpoints: {
+            920: {
+              slidesPerView: 1,
+            }
+        }
     });
 
-    $(window).resize(function() {
+    var swiper = new Swiper('.swiper-container4', {
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        loop: true,
+        slidesPerView: 2,
+        spaceBetween:30,
+        breakpoints: {
+            920: {
+              slidesPerView: 1,
+            }
+        }
+    });
+
+    var swiper = new Swiper('.swiper-container5', {
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        loop: true,
+        slidesPerView: 2,
+        spaceBetween:30
+    });
+
+    /*$(window).resize(function() {
         if (document.body.scrollWidth <= 920) {
             var swiper = new Swiper('.swiper-container2', {
                 slidesPerView: 2,
+            });
+            var swiper = new Swiper('.swiper-container3', {
+                slidesPerView: 1,
+            });
+            var swiper = new Swiper('.swiper-container4', {
+                slidesPerView: 1,
             });
         } else {
             var swiper = new Swiper('.swiper-container2', {
                 slidesPerView: 3,
             });
+            var swiper = new Swiper('.swiper-container3', {
+                slidesPerView: 2,
+            });
+            var swiper = new Swiper('.swiper-container4', {
+                slidesPerView: 2,
+                spaceBetween:30
+            });
         }
-    });
+    });*/
 
     $('.slidedown-s').click(function(event) {
             $(this).next().slideToggle();
@@ -49,15 +92,15 @@ jQuery(document).ready(function($) {
     $(document).scroll(function(event) {
         var top = document.body.scrollTop || document.documentElement.scrollTop;
         if(m_top && top > m_top){
-            $('.mou-items').css({'position':'fixed','right':'175px',"top":"0"});
+            $('.mou-items').css({'position':'fixed','right':'-5px',"top":"0","width":"24%"});
         }else if(top < m_top){
             $('.mou-items').attr('style','');
             console.log('obj');
         }
         if (top !== 0) {
-            $('.fixed-footer').hide();
+            $('.fixed-footer').addClass('active');
         } else {
-            $('.fixed-footer').show();
+            $('.fixed-footer').removeClass('active');
         }
     });
 });
