@@ -52,6 +52,10 @@ ul {
   transform: translate(-50%, -50%);
 }
 
+.front-page {
+  min-width: 1000px;
+}
+
 .content {
   margin-top: 100px;
 }
@@ -117,6 +121,7 @@ ul {
 }
 .fixed-footer.active {
   height: 0;
+  border-top: 0 none;
 }
 
 .l-header {
