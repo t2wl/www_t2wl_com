@@ -6,87 +6,47 @@ module.exports = function(grunt) {
 
         //清除目录
         clean: {
-            all: 'dist/**/*',
+            image: 'dist/images/**/*',
+            css: 'dist/css/**/*',
+            html: 'dist/tpls/**/*',
+            iconfont: 'dist/fonts/**/*'
         },
 
         copy: {
             html: {
                 files: [
-                    { expand: true, cwd: 'src/templates/', src: ['*.html'], dest: 'dist/templates/' }
+                    { expand: true, cwd: '../templets/catu/', src: ['*.html'], dest: 'dist/tpls/' }
                 ]
             },
-            themes: {
+            image: {
                 files: [
-                    { expand: true, cwd: 'src/themes/', src: ['**/*'], dest: 'dist/themes/' }
+                    { expand: true, cwd: 'src/images/', src: ['*.{png,jpg,jpeg,gif}'], dest: 'dist/images/' }
                 ]
             },
-            js: {
-                files: [{
-                    expand: true,
-                    cwd: 'src/libs/',
-                    filter: 'isFile',
-                    flatten: true,
-                    src: [
-                        'zepto/zepto.min.js',
-                        'Swiper/dist/js/swiper.min.js',
-                        'SUI-Mobile-dev/dist/js/sm-city-picker.js',
-                        'jquery/dist/jquery.min.js',
-                        'jquery_lazyload/jquery.lazyload.js',
-                        'SUI-Mobile-dev/dist/js/sm.min.js'
-                    ],
-                    dest: 'dist/themes/js/'
-                }]
-            },
-            css: {
-                files: [{
-                    expand: true,
-                    cwd: 'src/libs/',
-                    src: [
-                        'Swiper/dist/css/swiper.min.css',
-                        'SUI-Mobile-dev/dist/css/sm.min.css'
-                    ],
-                    dest: 'dist/themes/css/'
-                }]
+            iconfont: {
+                files: [
+                    { expand: true, cwd: 'src/fonts/', src: ['*.{eot,svg,ttf,woff}'], dest: 'dist/fonts/' }
+                ]
             }
         },
-
-        //替换文本
-        replace: {
-            example: {
-                src: ['src/templates/*.html'],
-                dest: 'dist/templates/',
-                replacements: [{
-                    from: '<meta property="qc:admins" content="66346472564274637563673145" />',
-                    to: ''
-                }]
-            }
-        },
-
 
         // 文件合并
         concat: {
             options: {
-                separator: '',
+                separator: ';',
                 stripBanners: true
             },
             js: {
                 src: [
-                    'dist/themes/js/jquery.min.js',
-                    'dist/themes/js/noConflict.js',
-                    'dist/themes/js/zepto.min.js',
-                    'dist/themes/js/sm.min.js',
-                    'dist/themes/js/sm-city-picker.js',
-                    'dist/themes/js/jquery.lazyload.js',
-                    'dist/themes/js/swiper.min.js',
-                    'dist/themes/js/common.js'
+                    "src/js/*.js"
                 ],
-                dest: "dist/themes/js/app.js"
+                dest: "dist/js/app.js"
             },
             css: {
                 src: [
-                    "dist/themes/css/**/*.css"
+                    "src/css/*.css"
                 ],
-                dest: "dist/themes/css/app.css"
+                dest: "dist/css/style.css"
             }
         },
 
@@ -94,8 +54,9 @@ module.exports = function(grunt) {
         uglify: {
             prod: {
                 options: {
-                    preserveComments: false,
-                    mangle: false,
+                    mangle: {
+                        except: ['require', 'exports', 'module', 'window']
+                    },
                     compress: {
                         global_defs: {
                             PROD: true
@@ -110,10 +71,9 @@ module.exports = function(grunt) {
 
                 files: [{
                     expand: true,
-                    cwd: 'dist/themes/',
-                    src: ['js/app.js'],
-                    dest: 'dist/themes/',
-                    ext: '.min.js'
+                    cwd: 'dist/js',
+                    src: ['js/*.js', '!js/*.min.js'],
+                    dest: 'dist/js'
                 }]
             }
         },
@@ -121,13 +81,13 @@ module.exports = function(grunt) {
             options: {
                 //任务设置
                 browserslist: ['last 2 versions', 'chrome', 'ie'],
-                map: false,
+                map: true,
             },
             files: {
                 expand: true,
-                cwd: 'dist/themes/css/',
+                cwd: 'src/themes/css/',
                 src: ['*.css'],
-                dest: 'dist/themes/css/'
+                dest: 'dist/css/'
             },
         },
         //压缩CSS
@@ -138,10 +98,9 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: 'dist/themes/',
-                    src: ['css/app.css'],
-                    dest: 'dist/themes/',
-                    ext: '.min.css'
+                    cwd: 'dist/css/',
+                    src: ['*.css'],
+                    dest: 'dist/css/'
                 }]
             }
         },
@@ -154,7 +113,7 @@ module.exports = function(grunt) {
                     pngquant: true
                 },
                 files: [
-                    { expand: true, cwd: 'dist/themes/images/', src: ['*.{png,jpg,jpeg,gif,webp,svg}'], dest: 'dist/themes/images/' }
+                    { expand: true, cwd: 'src/themes/images/', src: ['*.{png,jpg,jpeg,gif,webp,svg}'], dest: 'dist/themes/images/' }
                 ]
             }
         },
@@ -169,38 +128,37 @@ module.exports = function(grunt) {
                 files: [{
                     src: [
                         'dist/**/*',
-                        '!dist/templates/*.html',
-                        '!dist/themes/fonts/*.{eot,svg,ttf,woff}'
+                        '!dist/tpls/*.html',
+                        '!dist/fonts/*.{eot,svg,ttf,woff}'
                     ]
                 }]
             }
         },
         // 处理html中css、js 引入合并问题
         usemin: {
-            html: ['dist/templates/*.html'],
-            css: ['dist/themes/css/*.css'],
-            js:['dist/themes/js/*.js']
+            html: ['dist/tpls/*.html'],
+            css: ['dist/css/*.css']
         },
 
         //压缩HTML
-        /*htmlmin: {
-          options: {
-            removeComments: true,
-            removeCommentsFromCDATA: true,
-            collapseWhitespace: true,
-            collapseBooleanAttributes: true,
-            removeAttributeQuotes: true,
-            removeRedundantAttributes: true,
-            useShortDoctype: true,
-            removeEmptyAttributes: true,
-            removeOptionalTags: true
-          },
-          html: {
-            files: [
-              {expand: true, cwd: 'dist/html', src: ['*.html'], dest: 'dist/html'}
-            ]
-          }
-        }*/
+        htmlmin: {
+            options: {
+                removeComments: true,
+                removeCommentsFromCDATA: true,
+                collapseWhitespace: true,
+                collapseBooleanAttributes: true,
+                removeAttributeQuotes: true,
+                removeRedundantAttributes: true,
+                useShortDoctype: true,
+                removeEmptyAttributes: true,
+                removeOptionalTags: true
+            },
+            html: {
+                files: [
+                    { expand: true, cwd: 'dist/tpls', src: ['*.html'], dest: 'dist/tpls' }
+                ]
+            }
+        },
         connect: {
             options: {
                 port: 9000,
@@ -238,21 +196,17 @@ module.exports = function(grunt) {
     grunt.registerTask('prod', [
         'copy', //复制文件
         'concat', //合并文件
+        'imagemin', //图片压缩
         'cssmin', //CSS压缩
-        'autoprefixer',
         'uglify', //JS压缩
-        // 'imagemin',             //图片压缩
-        'filerev',
-        'usemin'
+        'usemin', //HTML处理
+        'htmlmin' //HTML压缩
     ]);
 
     grunt.registerTask('publish', ['clean', 'prod']);
-
-    grunt.registerTask('rep', ['replace']);
-
     grunt.registerTask('build', [
-        'clean',
-        'copy',
+        /*'clean',
+        'copy',*/
         'autoprefixer',
         'cssmin',
         // 'imagemin',
