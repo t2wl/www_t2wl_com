@@ -77,6 +77,26 @@ jQuery(document).ready(function($) {
             $(this).next().slideToggle();
     });
 
+    $('.gallery').click(function(event) {
+        var that = $(this);
+        $(this).find("div").toggle();
+        $('body').css('overflow','hidden');
+        setTimeout(function(){
+            that.find('div').addClass('active');
+        },500)
+    });
+    $(document).keydown(function(event) {
+        var e = event || window.event;
+         if(e && e.keyCode==27){ // 按 Esc
+            $('.gallery').find('div.active').hide();
+            $('body').removeAttr('style');
+      }
+    });
+
+    $('.zhaoshang').click(function(){
+        $(this).hide();
+    });
+
     $('.slidedown').hover(function(event) {
         $(this).find('dl').stop().slideDown();
     },function(){

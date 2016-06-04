@@ -1,4 +1,4 @@
-@charset 'utf-8';
+@charset "UTF-8";
 
 *{
 	margin:0;
@@ -321,7 +321,35 @@ background: #ffd5a8;
 		}
 	}
 }
+.zhaoshang{
+	a{
+		height: 80%;
+		   left: 50%;
+		   position: absolute;
+		   top: 50%;
+		   transform: translate(-50%, -50%);
+		   width: 90%;
 
+	}
+	position: fixed;
+	pointer-events:none;
+	 top: 50%;
+	  transform: translate(-50%, -50%);
+	   z-index: 111111;
+	    width: 500px;
+	     height: 250px;
+	      left: 50%;
+	      &:after{
+	      	content:'关闭';
+	      	color:black;
+	      	pointer-events:auto;
+	      	position:absolute;
+	      	right:0;
+	      	bottom:0;
+	      	padding:5px;
+	      	cursor:pointer;
+	      }
+}
 .l-show{
 	width:90%;
 	margin:0 auto;
@@ -468,6 +496,29 @@ background: #ffd5a8;
 			width: calc(33.3% - 33px);
 			margin-right: 33px;
 			margin-bottom: 30px;
+			>div{
+				&:after{
+					content:'按ESC键退出';
+					color:white;
+					font-size:20px;
+					position: absolute ;left: 50%;top: 50%;transform: translate(-50%,-50%);
+
+					transition:all linear .3s;
+				}
+				&.active:after{
+					color:transparent;
+				}
+				width: 100%;
+				height: 100%;
+				position:fixed;
+				left: 0;
+				top: 0;
+				overflow: hidden;
+				background:rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+				video{
+					position: absolute; left: 50%;top: 50%;transform: translate(-50%,-50%);
+				}
+			}
 			p{
 				padding:10px 0 0;
 				font-size:20px;
